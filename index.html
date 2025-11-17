@@ -378,8 +378,29 @@
             `;
         }
 
-        // Load on start
+       // Password protection
+const correctPassword = 'justCALL124action';  // Change this!
+
+function checkPassword() {
+    const userPassword = prompt('🔐 Enter password to access Kate\'s Meeting Tracker:');
+    
+    if (userPassword === correctPassword) {
         loadMeetings();
+    } else if (userPassword === null) {
+        document.getElementById('content').innerHTML = `
+            <div style="text-align: center; padding: 60px; background: white; border-radius: 15px;">
+                <h2>Access Required</h2>
+                <p>This dashboard is password protected.</p>
+            </div>
+        `;
+    } else {
+        alert('❌ Incorrect password');
+        checkPassword();
+    }
+}
+
+// Start with password check
+checkPassword();
     </script>
 </body>
 </html>
